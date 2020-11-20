@@ -1,24 +1,23 @@
 ---
 layout: default
+title: Page not found
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
+{%- include subheader.html -%}
 
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<!-- Error section Start -->
+<section class="section error bg-bottom bg-norepeat" style="background-image: url(https://via.placeholder.com/1920x442)">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="error-texts text-center">
+          <h1 class="custom-primary">404</h1>
+          <h2>Ooops! That page doesn't exist!</h2>
+            <!--<p class="my-4">Nulla quis lorem ut libero malesuada feugiat. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</p>-->
+            <a href="/" class="sigma_btn-custom secondary">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Error section End -->

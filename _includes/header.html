@@ -1,3 +1,5 @@
+{%- assign sorted_pages = site.pages | sort: "order" -%}
+
 <!-- Aside (Mobile Navigation) -->
 <aside class="sigma_aside sigma_aside-left">
 
@@ -6,11 +8,11 @@
   <!-- Menu -->
   <ul>
     <li class="menu-item">
-      <a href="/story.html">Our story</a>
-      <a href="/strategy.html">Strategy</a>
-      <a href="/values.html">Our values</a>
-      <a href="/energy-efficiency.html">Efficient energy use and the world</a>
-      <a href="/projects.html">Plans, projects</a>
+      {%- for my_page in sorted_pages -%}
+        {%- if my_page.title and my_page.order -%}
+      <a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+        {%- endif -%}
+      {%- endfor -%}
     </li>
   </ul>
 
@@ -35,21 +37,13 @@
 
         <!-- Menu -->
         <ul class="navbar-nav">
-          <li class="menu-item">
-            <a href="/story.html">Our story</a>
-          </li>
-          <li class="menu-item">
-            <a href="/strategy.html">Strategy</a>
-          </li>
-          <li class="menu-item">
-            <a href="/values.html">Our values</a>
-          </li>
-          <li class="menu-item">
-            <a href="/energy-efficiency.html">Efficient energy use and the world</a>
-          </li>
-          <li class="menu-item">
-            <a href="/projects.html">Plans, projects</a>
-          </li>
+          {%- for my_page in sorted_pages -%}
+            {%- if my_page.title and my_page.title != 'Home' and my_page.order -%}
+            <li class="menu-item">
+              <a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+            </li>
+            {%- endif -%}
+          {%- endfor -%}
         </ul>
 
         <!-- Controls -->
