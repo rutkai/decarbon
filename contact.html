@@ -69,24 +69,35 @@ title: Contact
                 <div class="section-title d-block d-lg-none">
                     <h4 class="title">Get in Touch!</h4>
                 </div>
-                <form>
+                <form action="https://getform.io/f/beb16970-dbf7-4048-9d27-50f5fa1a1f60" method="POST">
                     <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" class="form-control" name="Name">
+                        <label for="name">Full Name <em class="text-danger">*</em> </label>
+                        <input type="text" class="form-control" name="name" id="name" required />
                     </div>
                     <div class="form-group">
-                        <label>Email Address <em class="text-danger">*</em> </label>
-                        <input type="email" class="form-control" name="email">
+                        <label for="email">Email Address <em class="text-danger">*</em> </label>
+                        <input type="email" class="form-control" name="email" id="email" required />
                     </div>
                     <div class="form-group">
-                        <label>Subject <em class="text-danger">*</em> </label>
-                        <input type="text" class="form-control" name="subject">
+                        <label for="subject">Subject <em class="text-danger">*</em> </label>
+                        <input type="text" class="form-control" name="subject" id="subject" required />
                     </div>
                     <div class="form-group">
-                        <label>Message <em class="text-danger">*</em> </label>
-                        <textarea name="message" cols="45" rows="5" class="form-control"></textarea>
+                        <label for="text">Message <em class="text-danger">*</em> </label>
+                        <textarea name="text" cols="45" rows="5" class="form-control" id="text"></textarea>
                     </div>
                     <button type="submit" class="sigma_btn-custom secondary" name="button">Submit Now</button>
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+                    <input type="hidden" name="action" value="validate_captcha">
+                    <script src="https://www.google.com/recaptcha/api.js?render=6Lfr0ukZAAAAADY9NtL5lX7WaioaPyIVSIverCzi"></script>
+                    <script>
+                        grecaptcha.ready(function() {
+                            grecaptcha.execute('6Lfr0ukZAAAAADY9NtL5lX7WaioaPyIVSIverCzi', {action:'validate_captcha'})
+                                .then(function(token) {
+                                    document.getElementById('g-recaptcha-response').value = token;
+                                });
+                        });
+                    </script>
                 </form>
             </div>
         </div>
