@@ -1,7 +1,7 @@
 <!-- Footer Start -->
 <footer class="sigma_footer sigma_footer-dark primary-bg">
 
-  <img src="assets/img/textures/4.png" class="texture-3" alt="texture">
+  <img src="{{ "/assets/img/textures/4.png" | relative_url }}" class="texture-3" alt="texture">
 
   <!-- Bottom Wave -->
   <div class="sigma_footer-shape waves">
@@ -16,6 +16,8 @@
   <div class="sigma_footer-middle">
     <div class="container">
       <div class="row">
+        {%- assign sorted_pages = site.pages | where: "category", "front" | sort: "order" -%}
+        {%- assign sorted_projects = site.pages | where: "category", "project" | sort: "year" -%}
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
           <img src="https://via.placeholder.com/155x50" class="mb-4" alt="logo">
           <!--<p>9000 Regency Parkway, Suite 400 Cary, NC 27518</p>
@@ -29,31 +31,27 @@
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
           <h5 class="widget-title">Information</h5>
           <ul>
-            <li> <a href="index.html">Home</a> </li>
-            <li> <a href="blog-grid.html">Blog</a> </li>
-            <li> <a href="about-us.html">About Us</a> </li>
-            <li> <a href="shop.html">Shop</a> </li>
-            <li> <a href="contact-us.html">Contact Us</a> </li>
+            {%- for my_page in sorted_pages -%}
+              {%- if my_page.title != 'Home' -%}
+              <li> <a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a> </li>
+              {%- endif -%}
+            {%- endfor -%}
           </ul>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
-          <h5 class="widget-title">Others</h5>
+          <h5 class="widget-title">Current plans, projects</h5>
           <ul>
-            <li> <a href="wishlist.html">Wishlist</a> </li>
-            <li> <a href="services.html">Services</a> </li>
-            <li> <a href="product-single.html">Printer</a> </li>
-            <li> <a href="shop.html">Products</a> </li>
-            <li> <a href="blog-grid.html">Blog</a> </li>
+            {%- for my_page in sorted_projects -%}
+              {%- if my_page.year == 2020 -%}
+              <li> <a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a> </li>
+              {%- endif -%}
+            {%- endfor -%}
           </ul>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 d-none d-lg-block footer-widget">
-          <h5 class="widget-title">Top Categories</h5>
+          <h5 class="widget-title">Contact us</h5>
           <ul>
-            <li> <a href="#">Printers</a> </li>
-            <li> <a href="#">Print Outs</a> </li>
-            <li> <a href="#">Papers</a> </li>
-            <li> <a href="#">Back to School</a> </li>
-            <li> <a href="#">Pens</a> </li>
+            <li> <a href="{{ "/contact.html" | relative_url }}">Contacts</a> </li>
           </ul>
         </div>
       </div>
