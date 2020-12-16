@@ -9,10 +9,6 @@ ul.regular-list li {
     margin-left: 30px;
 }
 
-footer.sigma_footer {
-    z-index: 10;
-}
-
 /* Projects */
 
 .sigma_testimonial .sigma_testimonial-inner span.year {
